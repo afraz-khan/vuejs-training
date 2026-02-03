@@ -1,0 +1,321 @@
+{
+	"movies": [
+		{
+			"id": 1,
+			"title": "The Shawshank Redemption",
+			"year": 1994,
+			"genre": "Drama",
+			"director": "Frank Darabont",
+			"poster": "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg",
+			"description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+			"duration": 142,
+			"rating": 4.5,
+			"totalRatings": 5,
+			"individualRatings": [
+				5,
+				4,
+				5,
+				4,
+				4.5
+			],
+			"userRating": null,
+			"watched": false
+		},
+		{
+			"id": 2,
+			"title": "The Godfather",
+			"year": 1972,
+			"genre": "Crime",
+			"director": "Francis Ford Coppola",
+			"poster": "https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
+			"description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+			"duration": 175,
+			"rating": 4.7,
+			"totalRatings": 4,
+			"individualRatings": [
+				5,
+				4.5,
+				4.5,
+				4.8
+			],
+			"userRating": null,
+			"watched": false
+		},
+		{
+			"id": 3,
+			"title": "The Dark Knight",
+			"year": 2008,
+			"genre": "Action",
+			"director": "Christopher Nolan",
+			"poster": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+			"description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests.",
+			"duration": 152,
+			"rating": 4.6,
+			"totalRatings": 5,
+			"individualRatings": [
+				5,
+				4,
+				4.5,
+				5,
+				4.5
+			],
+			"userRating": null,
+			"watched": true
+		},
+		{
+			"id": 4,
+			"title": "Pulp Fiction",
+			"year": 1994,
+			"genre": "Crime",
+			"director": "Quentin Tarantino",
+			"poster": "https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg",
+			"description": "The lives of two mob hitmen, a boxer, a gangster and his wife intertwine in four tales of violence and redemption.",
+			"duration": 154,
+			"rating": 4.4,
+			"totalRatings": 3,
+			"individualRatings": [
+				4,
+				4.5,
+				4.7
+			],
+			"userRating": 5,
+			"watched": true
+		},
+		{
+			"id": 5,
+			"title": "Forrest Gump",
+			"year": 1994,
+			"genre": "Drama",
+			"director": "Robert Zemeckis",
+			"poster": "https://image.tmdb.org/t/p/w500/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg",
+			"description": "The presidencies of Kennedy and Johnson, the Vietnam War, and other historical events unfold from the perspective of an Alabama man.",
+			"duration": 142,
+			"rating": 4.3,
+			"totalRatings": 4,
+			"individualRatings": [
+				4,
+				4.5,
+				4.2,
+				4.5
+			],
+			"userRating": null,
+			"watched": false
+		},
+		{
+			"id": 6,
+			"title": "Inception",
+			"year": 2010,
+			"genre": "Sci-Fi",
+			"director": "Christopher Nolan",
+			"poster": "https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg",
+			"description": "A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea.",
+			"duration": 148,
+			"rating": 4.5,
+			"totalRatings": 4,
+			"individualRatings": [
+				4.5,
+				4.5,
+				4.5,
+				4.5
+			],
+			"userRating": 4,
+			"watched": true
+		},
+		{
+			"id": 7,
+			"title": "The Matrix",
+			"year": 1999,
+			"genre": "Sci-Fi",
+			"director": "Lana Wachowski, Lilly Wachowski",
+			"poster": "https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
+			"description": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+			"duration": 136,
+			"rating": 4.4,
+			"totalRatings": 5,
+			"individualRatings": [
+				4,
+				4.5,
+				4.5,
+				4.5,
+				4.5
+			],
+			"userRating": null,
+			"watched": false
+		},
+		{
+			"id": 8,
+			"title": "Goodfellas",
+			"year": 1990,
+			"genre": "Crime",
+			"director": "Martin Scorsese",
+			"poster": "https://image.tmdb.org/t/p/w500/aKuFiU82s5ISJpGZp7YkIr3kCUd.jpg",
+			"description": "The story of Henry Hill and his life in the mob, covering his relationship with his wife and his partners in crime.",
+			"duration": 146,
+			"rating": 4.6,
+			"totalRatings": 5,
+			"individualRatings": [
+				5,
+				4.5,
+				4.5,
+				4.5,
+				4.5
+			],
+			"userRating": null,
+			"watched": false
+		},
+		{
+			"id": 9,
+			"title": "Interstellar",
+			"year": 2014,
+			"genre": "Sci-Fi",
+			"director": "Christopher Nolan",
+			"poster": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+			"description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+			"duration": 169,
+			"rating": 4.5,
+			"totalRatings": 4,
+			"individualRatings": [
+				4.5,
+				4.5,
+				4.5,
+				4.5
+			],
+			"userRating": 5,
+			"watched": true
+		},
+		{
+			"id": 10,
+			"title": "Parasite",
+			"year": 2019,
+			"genre": "Thriller",
+			"director": "Bong Joon-ho",
+			"poster": "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
+			"description": "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+			"duration": 132,
+			"rating": 4.6,
+			"totalRatings": 5,
+			"individualRatings": [
+				5,
+				4.5,
+				4.5,
+				4.5,
+				4.5
+			],
+			"userRating": null,
+			"watched": false
+		},
+		{
+			"id": 11,
+			"title": "The Silence of the Lambs",
+			"year": 1991,
+			"genre": "Thriller",
+			"director": "Jonathan Demme",
+			"poster": "https://image.tmdb.org/t/p/w500/uS9m8OBk1A8eM9I042bx8XXpqAq.jpg",
+			"description": "A young FBI cadet must receive the help of an incarcerated cannibal killer to catch another serial killer.",
+			"duration": 118,
+			"rating": 4.5,
+			"totalRatings": 4,
+			"individualRatings": [
+				4.5,
+				4.5,
+				4.5,
+				4.5
+			],
+			"userRating": null,
+			"watched": false
+		},
+		{
+			"id": 12,
+			"title": "Spirited Away",
+			"year": 2001,
+			"genre": "Animation",
+			"director": "Hayao Miyazaki",
+			"poster": "https://image.tmdb.org/t/p/w500/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
+			"description": "During her family's move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches, and spirits.",
+			"duration": 125,
+			"rating": 4.7,
+			"totalRatings": 5,
+			"individualRatings": [
+				5,
+				4.5,
+				4.5,
+				5,
+				4.5
+			],
+			"userRating": 4,
+			"watched": true
+		},
+		{
+			"id": 13,
+			"title": "Gladiator",
+			"year": 2000,
+			"genre": "Action",
+			"director": "Ridley Scott",
+			"poster": "https://image.tmdb.org/t/p/w500/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg",
+			"description": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family.",
+			"duration": 155,
+			"rating": 4.4,
+			"totalRatings": 5,
+			"individualRatings": [
+				4.5,
+				4.5,
+				4.5,
+				4,
+				4.5
+			],
+			"userRating": null,
+			"watched": false
+		},
+		{
+			"id": 14,
+			"title": "Whiplash",
+			"year": 2014,
+			"genre": "Drama",
+			"director": "Damien Chazelle",
+			"poster": "https://image.tmdb.org/t/p/w500/7fn624j5lj3xTme2SgiLCeuedmO.jpg",
+			"description": "A promising young drummer enrolls at a cut-throat music conservatory where his dreams of greatness are mentored by an instructor who will stop at nothing.",
+			"duration": 106,
+			"rating": 4.5,
+			"totalRatings": 4,
+			"individualRatings": [
+				4.5,
+				4.5,
+				4.5,
+				4.5
+			],
+			"userRating": null,
+			"watched": false
+		},
+		{
+			"id": 15,
+			"title": "The Prestige",
+			"year": 2006,
+			"genre": "Mystery",
+			"director": "Christopher Nolan",
+			"poster": "https://image.tmdb.org/t/p/w500/bdN3gXuIZYaJP7ftKK2sU0nPtEA.jpg",
+			"description": "After a tragic accident, two stage magicians engage in a battle to create the ultimate illusion while sacrificing everything they have.",
+			"duration": 130,
+			"rating": 4.4,
+			"totalRatings": 5,
+			"individualRatings": [
+				4.5,
+				4.5,
+				4.5,
+				4,
+				4.5
+			],
+			"userRating": 3,
+			"watched": true
+		}
+	],
+	"genres": [
+		"All",
+		"Action",
+		"Animation",
+		"Crime",
+		"Drama",
+		"Mystery",
+		"Sci-Fi",
+		"Thriller"
+	]
+}
