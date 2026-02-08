@@ -1,0 +1,34 @@
+{
+	"name": "shared",
+	"version": "1.0.0",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"build": "tsc",
+		"build:watch": "tsc --watch",
+		"dev": "tsx watch src/index.ts",
+		"test": "tsx src/models/test.ts",
+		"test:connection": "tsx src/config/testConnection.ts",
+		"db:sync": "tsx scripts/syncDatabase.ts",
+		"clean": "rm -rf dist"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "Shared TypeScript code for Lambda functions",
+	"dependencies": {
+		"sequelize": "^6.37.7",
+		"mysql2": "^3.11.5",
+		"@aws-sdk/client-secrets-manager": "^3.700.0",
+		"dotenv": "^16.4.5",
+		"uuid": "^11.0.3"
+	},
+	"devDependencies": {
+		"typescript": "^5.7.2",
+		"@types/node": "^22.10.2",
+		"@types/aws-lambda": "^8.10.145",
+		"@types/uuid": "^10.0.0",
+		"tsx": "^4.19.2",
+		"esbuild": "^0.24.2"
+	}
+}

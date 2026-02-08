@@ -1,0 +1,50 @@
+{
+  "auth": {
+    "user_pool_id": "us-east-1_jSFTj1d0h",
+    "aws_region": "us-east-1",
+    "user_pool_client_id": "2jcottgi065merfa0le4jgtlni",
+    "identity_pool_id": "us-east-1:d040a838-f739-4c07-9b6b-b354369620d6",
+    "mfa_methods": [],
+    "standard_required_attributes": [
+      "email"
+    ],
+    "username_attributes": [
+      "email"
+    ],
+    "user_verification_types": [
+      "email"
+    ],
+    "groups": [],
+    "mfa_configuration": "NONE",
+    "password_policy": {
+      "min_length": 8,
+      "require_lowercase": true,
+      "require_numbers": true,
+      "require_symbols": true,
+      "require_uppercase": true
+    },
+    "unauthenticated_identities_enabled": true
+  },
+  "storage": {
+    "aws_region": "us-east-1",
+    "bucket_name": "amplify-assetmanagementap-assetimagesbucket6fc6755-z8le1ecjuq9x",
+    "buckets": [
+      {
+        "name": "assetImages",
+        "bucket_name": "amplify-assetmanagementap-assetimagesbucket6fc6755-z8le1ecjuq9x",
+        "aws_region": "us-east-1",
+        "paths": {
+          "assets/${cognito-identity.amazonaws.com:sub}/*": {
+            "entityidentity": [
+              "get",
+              "list",
+              "write",
+              "delete"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "version": "1.4"
+}
