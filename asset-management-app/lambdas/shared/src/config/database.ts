@@ -1,18 +1,21 @@
 import { Options } from 'sequelize'
-import { env } from './env'
-import type { DatabaseConfig } from '../types'
+import { env, getDbCredentials } from './env'
 
 /**
  * Get Sequelize configuration based on environment
+ * Async to support Secrets Manager in production
  */
-export function getDatabaseConfig(): Options {
+export async function getDatabaseConfig(): Promise<Options> {
+  // Get credentials (from Secrets Manager in production, or env vars in development)
+  const credentials = await getDbCredentials()
+  
   const baseConfig: Options = {
     dialect: 'mysql',
-    host: env.DB_HOST,
-    port: env.DB_PORT,
-    database: env.DB_NAME,
-    username: env.DB_USER,
-    password: env.DB_PASSWORD,
+    host: credentials.host,
+    port: credentials.port,
+    database: credentials.database,
+    username: credentials.username,
+    password: credentials.password,
     logging: env.NODE_ENV === 'development' ? console.log : false,
     pool: {
       max: env.DB_POOL_MAX,
@@ -32,5 +35,3 @@ export function getDatabaseConfig(): Options {
 
   return baseConfig
 }
-
-export default getDatabaseConfig()

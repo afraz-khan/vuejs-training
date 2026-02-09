@@ -6,6 +6,10 @@
         <div class="flex items-center justify-between">
           <h1 class="text-3xl font-bold text-gray-900">My Assets</h1>
           <div class="flex items-center gap-4">
+            <el-button type="primary" @click="showCreateDialog = true">
+              <el-icon class="mr-2"><Plus /></el-icon>
+              Create Asset
+            </el-button>
             <el-button @click="$router.push('/dashboard')">
               Dashboard
             </el-button>
@@ -19,31 +23,110 @@
 
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
-      <div class="bg-white p-8 rounded-lg shadow text-center">
-        <el-icon :size="64" class="text-gray-400 mb-4">
-          <Document />
-        </el-icon>
-        <h2 class="text-2xl font-semibold text-gray-700 mb-2">No Assets Yet</h2>
-        <p class="text-gray-600 mb-6">
-          This is a protected route. You can only see this because you're logged in!
-        </p>
-        <el-button type="primary" size="large">
-          Create Your First Asset
-        </el-button>
-      </div>
+      <AssetList
+        :assets="assets"
+        :loading="loading"
+        :error="error"
+        @view="handleView"
+        @edit="handleEdit"
+        @delete="handleDelete"
+        @create="showCreateDialog = true"
+      />
     </main>
+
+    <!-- Create Asset Dialog -->
+    <CreateAssetDialog
+      v-model:visible="showCreateDialog"
+      :loading="creating"
+      @submit="handleCreate"
+    />
   </div>
 </template>
 
 <script setup>
+import { ref, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
-import { ElMessage } from 'element-plus'
-import { Document } from '@element-plus/icons-vue'
+import { ElMessage, ElMessageBox } from 'element-plus'
+import { Plus } from '@element-plus/icons-vue'
 import { useAuthStore } from '@/stores/authStore'
+import { useAssets } from '@/composables/useAssets'
+import AssetList from '@/components/assets/AssetList.vue'
+import CreateAssetDialog from '@/components/assets/CreateAssetDialog.vue'
 
 const router = useRouter()
 const authStore = useAuthStore()
 
+// Use assets composable
+const {
+  assets,
+  loading,
+  error,
+  fetchAssets,
+  createAsset,
+  deleteAsset
+} = useAssets()
+
+// Local state
+const showCreateDialog = ref(false)
+const creating = ref(false)
+
+// Fetch assets on mount
+onMounted(async () => {
+  await fetchAssets()
+})
+
+// Handle create asset
+const handleCreate = async (assetData) => {
+  creating.value = true
+  try {
+    await createAsset(assetData, assetData.imageFile)
+    ElMessage.success('Asset created successfully')
+    showCreateDialog.value = false
+    // Refresh list
+    await fetchAssets()
+  } catch (err) {
+    ElMessage.error('Failed to create asset: ' + err.message)
+  } finally {
+    creating.value = false
+  }
+}
+
+// Handle view asset
+const handleView = (assetId) => {
+  router.push(`/assets/${assetId}`)
+}
+
+// Handle edit asset
+const handleEdit = (assetId) => {
+  router.push(`/assets/${assetId}/edit`)
+}
+
+// Handle delete asset
+const handleDelete = async (assetId) => {
+  try {
+    await ElMessageBox.confirm(
+      'Are you sure you want to delete this asset? This action cannot be undone.',
+      'Confirm Delete',
+      {
+        confirmButtonText: 'Delete',
+        cancelButtonText: 'Cancel',
+        type: 'warning',
+        confirmButtonClass: 'el-button--danger'
+      }
+    )
+
+    await deleteAsset(assetId)
+    ElMessage.success('Asset deleted successfully')
+    // Refresh list
+    await fetchAssets()
+  } catch (err) {
+    if (err !== 'cancel') {
+      ElMessage.error('Failed to delete asset: ' + err.message)
+    }
+  }
+}
+
+// Handle logout
 const handleLogout = async () => {
   const result = await authStore.logout()
   if (result.success) {

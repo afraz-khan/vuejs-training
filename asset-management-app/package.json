@@ -1,24 +1,26 @@
 {
-  "name": "asset-management-app",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "@aws-amplify/backend": "^1.20.0",
-    "@aws-amplify/backend-cli": "^1.8.2",
-    "aws-cdk-lib": "^2.234.1",
-    "constructs": "^10.4.5",
-    "esbuild": "^0.27.2",
-    "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
-  },
-  "dependencies": {
-    "aws-amplify": "^6.16.2"
-  }
+	"name": "asset-management-app",
+	"version": "1.0.0",
+	"type": "module",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"test:graphql": "node test-graphql.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"devDependencies": {
+		"@aws-amplify/backend": "^1.20.0",
+		"@aws-amplify/backend-cli": "^1.8.2",
+		"aws-cdk-lib": "^2.234.1",
+		"constructs": "^10.4.5",
+		"esbuild": "^0.27.2",
+		"tsx": "^4.21.0",
+		"typescript": "^5.9.3"
+	},
+	"dependencies": {
+		"aws-amplify": "^6.16.2"
+	}
 }

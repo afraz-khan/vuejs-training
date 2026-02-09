@@ -1,6 +1,6 @@
 import dotenv from 'dotenv'
 import path from 'path'
-import { fileURLToPath } from 'url'
+import { getDatabaseCredentials } from './secretsManager'
 
 // Load environment variables from .env file
 // Try multiple locations to find .env
@@ -14,7 +14,7 @@ let loaded = false
 for (const envPath of possiblePaths) {
   const result = dotenv.config({ path: envPath })
   if (!result.error) {
-    console.log('� Loading .env from:', envPath)
+    console.log('📄 Loading .env from:', envPath)
     console.log('✅ .env file loaded successfully')
     loaded = true
     break
@@ -70,5 +70,48 @@ export function validateEnv(): void {
   
   if (missing.length > 0) {
     throw new Error(`Missing required environment variables: ${missing.join(', ')}`)
+  }
+}
+
+/**
+ * Get database credentials with Secrets Manager support
+ * In production, fetches password from AWS Secrets Manager
+ * In development, uses environment variables
+ */
+export async function getDbCredentials() {
+  // In production with Secrets Manager configured
+  if (env.NODE_ENV === 'production' && env.DB_SECRET_NAME) {
+    console.log('🔐 Fetching database credentials from AWS Secrets Manager...')
+    try {
+      const credentials = await getDatabaseCredentials()
+      return {
+        host: credentials.host || env.DB_HOST,
+        port: credentials.port || env.DB_PORT,
+        database: credentials.database || env.DB_NAME,
+        username: credentials.username || env.DB_USER,
+        password: credentials.password,
+      }
+    } catch (error) {
+      console.error('❌ Failed to fetch from Secrets Manager:', error)
+      console.log('⚠️  Falling back to environment variables')
+      // Fallback to environment variables
+      return {
+        host: env.DB_HOST,
+        port: env.DB_PORT,
+        database: env.DB_NAME,
+        username: env.DB_USER,
+        password: env.DB_PASSWORD,
+      }
+    }
+  }
+  
+  // Development: use environment variables
+  console.log('🔧 Using environment variables for database credentials')
+  return {
+    host: env.DB_HOST,
+    port: env.DB_PORT,
+    database: env.DB_NAME,
+    username: env.DB_USER,
+    password: env.DB_PASSWORD,
   }
 }

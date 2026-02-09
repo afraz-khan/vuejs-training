@@ -15,7 +15,8 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.2",
     "aws-amplify": "^6.16.2",
-    "axios": "^1.13.4",
+    "axios": "^1.13.5",
+    "date-fns": "^4.1.0",
     "element-plus": "^2.13.2",
     "pinia": "^3.0.4",
     "vue": "^3.5.27",

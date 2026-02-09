@@ -1,45 +1,45 @@
-import { defineData, type ClientSchema } from '@aws-amplify/backend'
+import { type ClientSchema, a, defineData } from '@aws-amplify/backend'
 
-/**
- * Define the data resource for RDS MySQL
- * 
- * This configures an RDS MySQL instance with:
- * - MySQL 8.0 engine
- * - VPC configuration for security
- * - Automated backups
- * - Multi-AZ for production (optional)
- */
-export const data = defineData({
-  name: 'HeraTrainingDB',
-  
-  // Database engine configuration
-  engine: 'mysql',
-  engineVersion: '8.0.35',
-  
-  // Instance configuration
-  instanceType: 'db.t3.micro', // Free tier eligible
-  
-  // Storage configuration
-  allocatedStorage: 20, // GB
-  maxAllocatedStorage: 100, // Auto-scaling limit
-  
-  // Database credentials
-  // These will be stored in AWS Secrets Manager automatically
-  databaseName: 'HeraTraining',
-  masterUsername: 'admin',
-  
-  // Backup configuration
-  backupRetention: 7, // days
-  
-  // Security configuration
-  publiclyAccessible: false, // Keep in private subnet
-  
-  // Deletion protection (enable for production)
-  deletionProtection: false, // Set to true for production
-  
-  // Multi-AZ deployment (for production high availability)
-  multiAZ: false, // Set to true for production
+const schema = a.schema({
+  // Asset Tags - flexible tagging system
+  AssetTag: a
+    .model({
+      assetId: a.string().required(),
+      tagName: a.string().required(),
+      tagValue: a.string(),
+      createdBy: a.string(),
+      createdAt: a.datetime(),
+    })
+    .authorization((allow) => [allow.authenticated()]),
+
+  // Asset Status - track asset lifecycle
+  AssetStatus: a
+    .model({
+      assetId: a.string().required(),
+      status: a.enum(['active', 'archived', 'maintenance', 'deleted']),
+      statusNote: a.string(),
+      updatedBy: a.string(),
+      updatedAt: a.datetime(),
+    })
+    .authorization((allow) => [allow.authenticated()]),
+
+  // Activity Log - audit trail
+  ActivityLog: a
+    .model({
+      assetId: a.string().required(),
+      action: a.enum(['created', 'viewed', 'updated', 'deleted']),
+      performedBy: a.string(),
+      details: a.string(),
+      timestamp: a.datetime(),
+    })
+    .authorization((allow) => [allow.authenticated()]),
 })
 
-// Export the schema type for client usage
-export type Schema = ClientSchema<typeof data>
+export type Schema = ClientSchema<typeof schema>
+
+export const data = defineData({
+  schema,
+  authorizationModes: {
+    defaultAuthorizationMode: 'userPool',
+  },
+})

@@ -1,50 +1,363 @@
 {
-  "auth": {
-    "user_pool_id": "us-east-1_jSFTj1d0h",
-    "aws_region": "us-east-1",
-    "user_pool_client_id": "2jcottgi065merfa0le4jgtlni",
-    "identity_pool_id": "us-east-1:d040a838-f739-4c07-9b6b-b354369620d6",
-    "mfa_methods": [],
-    "standard_required_attributes": [
-      "email"
-    ],
-    "username_attributes": [
-      "email"
-    ],
-    "user_verification_types": [
-      "email"
-    ],
-    "groups": [],
-    "mfa_configuration": "NONE",
-    "password_policy": {
-      "min_length": 8,
-      "require_lowercase": true,
-      "require_numbers": true,
-      "require_symbols": true,
-      "require_uppercase": true
-    },
-    "unauthenticated_identities_enabled": true
-  },
-  "storage": {
-    "aws_region": "us-east-1",
-    "bucket_name": "amplify-assetmanagementap-assetimagesbucket6fc6755-z8le1ecjuq9x",
-    "buckets": [
-      {
-        "name": "assetImages",
-        "bucket_name": "amplify-assetmanagementap-assetimagesbucket6fc6755-z8le1ecjuq9x",
-        "aws_region": "us-east-1",
-        "paths": {
-          "assets/${cognito-identity.amazonaws.com:sub}/*": {
-            "entityidentity": [
-              "get",
-              "list",
-              "write",
-              "delete"
-            ]
-          }
-        }
-      }
-    ]
-  },
-  "version": "1.4"
+	"auth": {
+		"user_pool_id": "us-east-1_ZbwAamaPg",
+		"aws_region": "us-east-1",
+		"user_pool_client_id": "56if2ecopigii4c6ruo7kk0as6",
+		"identity_pool_id": "us-east-1:dcf07136-04ec-4e82-8535-3999247b5a3d",
+		"mfa_methods": [],
+		"standard_required_attributes": [
+			"email"
+		],
+		"username_attributes": [
+			"email"
+		],
+		"user_verification_types": [
+			"email"
+		],
+		"groups": [],
+		"mfa_configuration": "NONE",
+		"password_policy": {
+			"min_length": 8,
+			"require_lowercase": true,
+			"require_numbers": true,
+			"require_symbols": true,
+			"require_uppercase": true
+		},
+		"unauthenticated_identities_enabled": true
+	},
+	"data": {
+		"url": "https://ufl7ss6hwrhl3ckpkczx52gjr4.appsync-api.us-east-1.amazonaws.com/graphql",
+		"aws_region": "us-east-1",
+		"default_authorization_type": "AMAZON_COGNITO_USER_POOLS",
+		"authorization_types": [
+			"AWS_IAM"
+		],
+		"model_introspection": {
+			"version": 1,
+			"models": {
+				"AssetTag": {
+					"name": "AssetTag",
+					"fields": {
+						"id": {
+							"name": "id",
+							"isArray": false,
+							"type": "ID",
+							"isRequired": true,
+							"attributes": []
+						},
+						"assetId": {
+							"name": "assetId",
+							"isArray": false,
+							"type": "String",
+							"isRequired": true,
+							"attributes": []
+						},
+						"tagName": {
+							"name": "tagName",
+							"isArray": false,
+							"type": "String",
+							"isRequired": true,
+							"attributes": []
+						},
+						"tagValue": {
+							"name": "tagValue",
+							"isArray": false,
+							"type": "String",
+							"isRequired": false,
+							"attributes": []
+						},
+						"createdBy": {
+							"name": "createdBy",
+							"isArray": false,
+							"type": "String",
+							"isRequired": false,
+							"attributes": []
+						},
+						"createdAt": {
+							"name": "createdAt",
+							"isArray": false,
+							"type": "AWSDateTime",
+							"isRequired": false,
+							"attributes": []
+						},
+						"updatedAt": {
+							"name": "updatedAt",
+							"isArray": false,
+							"type": "AWSDateTime",
+							"isRequired": false,
+							"attributes": [],
+							"isReadOnly": true
+						}
+					},
+					"syncable": true,
+					"pluralName": "AssetTags",
+					"attributes": [
+						{
+							"type": "model",
+							"properties": {}
+						},
+						{
+							"type": "auth",
+							"properties": {
+								"rules": [
+									{
+										"allow": "private",
+										"operations": [
+											"create",
+											"update",
+											"delete",
+											"read"
+										]
+									}
+								]
+							}
+						}
+					],
+					"primaryKeyInfo": {
+						"isCustomPrimaryKey": false,
+						"primaryKeyFieldName": "id",
+						"sortKeyFieldNames": []
+					}
+				},
+				"AssetStatus": {
+					"name": "AssetStatus",
+					"fields": {
+						"id": {
+							"name": "id",
+							"isArray": false,
+							"type": "ID",
+							"isRequired": true,
+							"attributes": []
+						},
+						"assetId": {
+							"name": "assetId",
+							"isArray": false,
+							"type": "String",
+							"isRequired": true,
+							"attributes": []
+						},
+						"status": {
+							"name": "status",
+							"isArray": false,
+							"type": {
+								"enum": "AssetStatusStatus"
+							},
+							"isRequired": false,
+							"attributes": []
+						},
+						"statusNote": {
+							"name": "statusNote",
+							"isArray": false,
+							"type": "String",
+							"isRequired": false,
+							"attributes": []
+						},
+						"updatedBy": {
+							"name": "updatedBy",
+							"isArray": false,
+							"type": "String",
+							"isRequired": false,
+							"attributes": []
+						},
+						"updatedAt": {
+							"name": "updatedAt",
+							"isArray": false,
+							"type": "AWSDateTime",
+							"isRequired": false,
+							"attributes": []
+						},
+						"createdAt": {
+							"name": "createdAt",
+							"isArray": false,
+							"type": "AWSDateTime",
+							"isRequired": false,
+							"attributes": [],
+							"isReadOnly": true
+						}
+					},
+					"syncable": true,
+					"pluralName": "AssetStatuses",
+					"attributes": [
+						{
+							"type": "model",
+							"properties": {}
+						},
+						{
+							"type": "auth",
+							"properties": {
+								"rules": [
+									{
+										"allow": "private",
+										"operations": [
+											"create",
+											"update",
+											"delete",
+											"read"
+										]
+									}
+								]
+							}
+						}
+					],
+					"primaryKeyInfo": {
+						"isCustomPrimaryKey": false,
+						"primaryKeyFieldName": "id",
+						"sortKeyFieldNames": []
+					}
+				},
+				"ActivityLog": {
+					"name": "ActivityLog",
+					"fields": {
+						"id": {
+							"name": "id",
+							"isArray": false,
+							"type": "ID",
+							"isRequired": true,
+							"attributes": []
+						},
+						"assetId": {
+							"name": "assetId",
+							"isArray": false,
+							"type": "String",
+							"isRequired": true,
+							"attributes": []
+						},
+						"action": {
+							"name": "action",
+							"isArray": false,
+							"type": {
+								"enum": "ActivityLogAction"
+							},
+							"isRequired": false,
+							"attributes": []
+						},
+						"performedBy": {
+							"name": "performedBy",
+							"isArray": false,
+							"type": "String",
+							"isRequired": false,
+							"attributes": []
+						},
+						"details": {
+							"name": "details",
+							"isArray": false,
+							"type": "String",
+							"isRequired": false,
+							"attributes": []
+						},
+						"timestamp": {
+							"name": "timestamp",
+							"isArray": false,
+							"type": "AWSDateTime",
+							"isRequired": false,
+							"attributes": []
+						},
+						"createdAt": {
+							"name": "createdAt",
+							"isArray": false,
+							"type": "AWSDateTime",
+							"isRequired": false,
+							"attributes": [],
+							"isReadOnly": true
+						},
+						"updatedAt": {
+							"name": "updatedAt",
+							"isArray": false,
+							"type": "AWSDateTime",
+							"isRequired": false,
+							"attributes": [],
+							"isReadOnly": true
+						}
+					},
+					"syncable": true,
+					"pluralName": "ActivityLogs",
+					"attributes": [
+						{
+							"type": "model",
+							"properties": {}
+						},
+						{
+							"type": "auth",
+							"properties": {
+								"rules": [
+									{
+										"allow": "private",
+										"operations": [
+											"create",
+											"update",
+											"delete",
+											"read"
+										]
+									}
+								]
+							}
+						}
+					],
+					"primaryKeyInfo": {
+						"isCustomPrimaryKey": false,
+						"primaryKeyFieldName": "id",
+						"sortKeyFieldNames": []
+					}
+				}
+			},
+			"enums": {
+				"AssetStatusStatus": {
+					"name": "AssetStatusStatus",
+					"values": [
+						"active",
+						"archived",
+						"maintenance",
+						"deleted"
+					]
+				},
+				"ActivityLogAction": {
+					"name": "ActivityLogAction",
+					"values": [
+						"created",
+						"viewed",
+						"updated",
+						"deleted"
+					]
+				}
+			},
+			"nonModels": {}
+		}
+	},
+	"storage": {
+		"aws_region": "us-east-1",
+		"bucket_name": "amplify-assetmanagementap-assetimagesbucket6fc6755-tc8pgcsxwkwb",
+		"buckets": [
+			{
+				"name": "assetImages",
+				"bucket_name": "amplify-assetmanagementap-assetimagesbucket6fc6755-tc8pgcsxwkwb",
+				"aws_region": "us-east-1",
+				"paths": {
+					"assets/${cognito-identity.amazonaws.com:sub}/*": {
+						"entityidentity": [
+							"get",
+							"list",
+							"write",
+							"delete"
+						]
+					}
+				}
+			}
+		]
+	},
+	"version": "1.4",
+	"custom": {
+		"database": {
+			"endpoint": "amplify-assetmanagementapp-heratrainingdbfbab7ca3-9eleuuwfmz5x.c2xw4omkuu11.us-east-1.rds.amazonaws.com",
+			"port": "3306",
+			"databaseName": "HeraTraining",
+			"secretArn": "arn:aws:secretsmanager:us-east-1:207362638353:secret:amplify-heratraining-db-credentials-fzYcZY",
+			"securityGroupId": "sg-04fef6cb5ecf52ba8",
+			"vpcId": "vpc-0e2439368e2f2af4a"
+		},
+		"api": {
+			"url": "https://5vcw3v86ja.execute-api.us-east-1.amazonaws.com/prod/",
+			"name": "Asset Management API",
+			"id": "5vcw3v86ja"
+		}
+	}
 }

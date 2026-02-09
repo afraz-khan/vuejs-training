@@ -7,11 +7,9 @@ import { defineStorage } from '@aws-amplify/backend';
 export const storage = defineStorage({
   name: 'assetImages',
   access: (allow) => ({
-    // Path pattern: assets/{userId}/{assetId}/filename.jpg
-    // This provides better organization and user isolation
+    // Path pattern: assets/{entity_id}/*
+    // Users can only access their own folder
     'assets/{entity_id}/*': [
-      // Authenticated users can read, write, delete files in their own folder
-      // {entity_id} will be replaced with the user's Cognito ID
       allow.entity('identity').to(['read', 'write', 'delete'])
     ]
   })
