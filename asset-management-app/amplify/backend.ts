@@ -142,42 +142,42 @@ const createAssetFn = new lambda.Function(stack, 'CreateAssetFunction', {
   ...lambdaConfig,
   functionName: 'asset-management-createAsset',
   code: lambda.Code.fromAsset('lambdas/functions/createAsset'),
-  handler: 'index.handler',
+  handler: 'dist/index.handler',
 })
 
 const getAssetFn = new lambda.Function(stack, 'GetAssetFunction', {
   ...lambdaConfig,
   functionName: 'asset-management-getAsset',
   code: lambda.Code.fromAsset('lambdas/functions/getAsset'),
-  handler: 'index.handler',
+  handler: 'dist/index.handler',
 })
 
 const listAssetsFn = new lambda.Function(stack, 'ListAssetsFunction', {
   ...lambdaConfig,
   functionName: 'asset-management-listAssets',
   code: lambda.Code.fromAsset('lambdas/functions/listAssets'),
-  handler: 'index.handler',
+  handler: 'dist/index.handler',
 })
 
 const updateAssetFn = new lambda.Function(stack, 'UpdateAssetFunction', {
   ...lambdaConfig,
   functionName: 'asset-management-updateAsset',
   code: lambda.Code.fromAsset('lambdas/functions/updateAsset'),
-  handler: 'index.handler',
+  handler: 'dist/index.handler',
 })
 
 const deleteAssetFn = new lambda.Function(stack, 'DeleteAssetFunction', {
   ...lambdaConfig,
   functionName: 'asset-management-deleteAsset',
   code: lambda.Code.fromAsset('lambdas/functions/deleteAsset'),
-  handler: 'index.handler',
+  handler: 'dist/index.handler',
 })
 
-const syncSchemaFn = new lambda.Function(stack, 'CreateAssetFunction', {
+const syncSchemaFn = new lambda.Function(stack, 'SyncSchemaFunction', {
   ...lambdaConfig,
   functionName: 'asset-management-syncSchema',
   code: lambda.Code.fromAsset('lambdas/functions/syncSchema'),
-  handler: 'index.handler',
+  handler: 'dist/index.handler',
 })
 
 // Create API Gateway

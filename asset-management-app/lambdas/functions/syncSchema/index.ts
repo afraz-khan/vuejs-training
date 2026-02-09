@@ -1,5 +1,5 @@
 import { connectToDatabase } from '../../shared/src/config/dbHelper'
-import { sequelize } from '../../shared/src/config/database'
+import { sequelize } from '../../shared/src/models'
 
 /**
  * One-time Lambda to sync database schema
