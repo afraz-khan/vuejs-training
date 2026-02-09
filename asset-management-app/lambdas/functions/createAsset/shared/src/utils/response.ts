@@ -1,6 +1,17 @@
 import type { APIGatewayProxyResult } from 'aws-lambda'
 
 /**
+ * Common CORS headers for all responses
+ */
+const CORS_HEADERS = {
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Amz-Date, X-Api-Key, X-Amz-Security-Token',
+  'Access-Control-Allow-Credentials': 'true',
+}
+
+/**
  * Create a successful API response
  */
 export function successResponse<T>(
@@ -9,11 +20,7 @@ export function successResponse<T>(
 ): APIGatewayProxyResult {
   return {
     statusCode,
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Credentials': true,
-    },
+    headers: CORS_HEADERS,
     body: JSON.stringify({
       success: true,
       data,
@@ -33,11 +40,7 @@ export function errorResponse(
   
   return {
     statusCode,
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Credentials': true,
-    },
+    headers: CORS_HEADERS,
     body: JSON.stringify({
       success: false,
       error: message,
@@ -54,11 +57,7 @@ export function validationErrorResponse(
 ): APIGatewayProxyResult {
   return {
     statusCode: 400,
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Credentials': true,
-    },
+    headers: CORS_HEADERS,
     body: JSON.stringify({
       success: false,
       error: message,

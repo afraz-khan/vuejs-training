@@ -197,7 +197,7 @@ const assets = api.root.addResource('assets')
 // Add CORS support for /assets resource
 assets.addCorsPreflight({
   allowOrigins: ['*'],
-  allowMethods: ['GET', 'POST', 'OPTIONS'],
+  allowMethods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
   allowHeaders: ['Content-Type', 'Authorization', 'X-Amz-Date', 'X-Api-Key', 'X-Amz-Security-Token'],
 })
 
