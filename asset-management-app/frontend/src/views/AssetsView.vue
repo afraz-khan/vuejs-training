@@ -4,7 +4,12 @@
     <header class="bg-white shadow">
       <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between">
-          <h1 class="text-3xl font-bold text-gray-900">Asset Management</h1>
+          <div class="flex items-center gap-4">
+            <el-button @click="$router.push('/')" circle>
+              <el-icon><ArrowLeft /></el-icon>
+            </el-button>
+            <h1 class="text-3xl font-bold text-gray-900">Asset Management</h1>
+          </div>
           <el-button type="primary" @click="showCreateDialog = true">
             <el-icon class="mr-2"><Plus /></el-icon>
             Create Asset
@@ -86,6 +91,7 @@
         @view="handleView"
         @edit="handleEdit"
         @delete="handleDelete"
+        @create="showCreateDialog = true"
       />
 
       <!-- Empty State -->
@@ -137,7 +143,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import { Plus, Search, Refresh } from '@element-plus/icons-vue'
+import { Plus, Search, Refresh, ArrowLeft } from '@element-plus/icons-vue'
 import { useAssets } from '@/composables/useAssets'
 import { useAssetFilters } from '@/composables/useAssetFilters'
 import AssetList from '@/components/assets/AssetList.vue'

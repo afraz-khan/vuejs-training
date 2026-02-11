@@ -19,24 +19,6 @@
 
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <!-- Stats Cards -->
-        <div class="bg-white p-6 rounded-lg shadow">
-          <h3 class="text-lg font-semibold text-gray-700 mb-2">Total Assets</h3>
-          <p class="text-3xl font-bold text-blue-600">0</p>
-        </div>
-        
-        <div class="bg-white p-6 rounded-lg shadow">
-          <h3 class="text-lg font-semibold text-gray-700 mb-2">Active Tags</h3>
-          <p class="text-3xl font-bold text-green-600">0</p>
-        </div>
-        
-        <div class="bg-white p-6 rounded-lg shadow">
-          <h3 class="text-lg font-semibold text-gray-700 mb-2">Recent Activity</h3>
-          <p class="text-3xl font-bold text-purple-600">0</p>
-        </div>
-      </div>
-
       <!-- Quick Actions -->
       <div class="bg-white p-6 rounded-lg shadow">
         <h2 class="text-xl font-semibold mb-4">Quick Actions</h2>

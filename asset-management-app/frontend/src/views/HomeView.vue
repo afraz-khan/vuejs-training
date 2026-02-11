@@ -8,8 +8,8 @@
       
       <!-- Show different buttons based on auth status -->
       <div v-if="authStore.isAuthenticated" class="flex gap-4">
-        <el-button type="primary" @click="$router.push('/dashboard')">
-          Go to Dashboard
+        <el-button type="primary" @click="$router.push('/assets')">
+          Go to Assets
         </el-button>
         <el-button @click="$router.push('/assets')">
           View Assets

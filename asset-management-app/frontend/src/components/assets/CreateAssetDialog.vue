@@ -95,6 +95,10 @@ const dialogVisible = ref(props.visible)
 // Watch for prop changes
 watch(() => props.visible, (newVal) => {
   dialogVisible.value = newVal
+  // Reset form when dialog is opened
+  if (newVal) {
+    resetForm()
+  }
 })
 
 // Watch for local changes
@@ -148,6 +152,20 @@ const clearImage = () => {
   imagePreview.value = null
 }
 
+// Reset form
+const resetForm = () => {
+  // Reset form fields
+  formData.name = ''
+  formData.category = ''
+  formData.description = ''
+  
+  // Clear image
+  clearImage()
+  
+  // Clear validation
+  formRef.value?.clearValidate()
+}
+
 // Handle form submit
 const handleSubmit = async () => {
   if (!formRef.value) return
@@ -167,9 +185,7 @@ const handleSubmit = async () => {
 
 // Handle dialog close
 const handleClose = () => {
-  // Reset form
-  formRef.value?.resetFields()
-  clearImage()
+  resetForm()
   dialogVisible.value = false
 }
 </script>

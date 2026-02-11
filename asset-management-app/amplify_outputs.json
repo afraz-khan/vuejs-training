@@ -332,8 +332,8 @@
         "bucket_name": "amplify-assetmanagementap-assetimagesbucket6fc6755-tc8pgcsxwkwb",
         "aws_region": "us-east-1",
         "paths": {
-          "assets/${cognito-identity.amazonaws.com:sub}/*": {
-            "entityidentity": [
+          "assets/*": {
+            "authenticated": [
               "get",
               "list",
               "write",

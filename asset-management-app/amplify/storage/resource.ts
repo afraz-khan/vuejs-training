@@ -8,9 +8,10 @@ export const storage = defineStorage({
   name: 'assetImages',
   access: (allow) => ({
     // Path pattern: assets/{entity_id}/*
-    // Users can only access their own folder
+    // Users can only access their own folder using their User Pool sub (userId)
+    // This matches the ownerId in the RDS database
     'assets/{entity_id}/*': [
-      allow.entity('identity').to(['read', 'write', 'delete'])
+      allow.authenticated.to(['read', 'write', 'delete'])
     ]
   })
 });

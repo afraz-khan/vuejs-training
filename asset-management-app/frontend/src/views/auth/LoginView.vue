@@ -58,9 +58,9 @@ const handleLogin = async (formData) => {
   if (result.success) {
     if (result.isSignedIn) {
       ElMessage.success('Welcome back!')
-      // Redirect to home or dashboard
+      // Redirect to assets page
       // Check if there's a redirect query parameter
-			const redirectPath = router.currentRoute.value.query.redirect || '/dashboard'
+			const redirectPath = router.currentRoute.value.query.redirect || '/assets'
 			router.push(redirectPath)
     } else if (result.nextStep) {
       // Handle additional steps (MFA, password change, etc.)

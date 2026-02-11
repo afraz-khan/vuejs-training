@@ -34,13 +34,13 @@
 
     <!-- Actions -->
     <div class="asset-actions">
-      <el-button size="small" @click="$emit('view', asset.id)">
+      <el-button size="small" @click="$emit('view', asset)">
         View
       </el-button>
-      <el-button size="small" @click="$emit('edit', asset.id)">
+      <el-button size="small" @click="$emit('edit', asset)">
         Edit
       </el-button>
-      <el-button size="small" type="danger" @click="$emit('delete', asset.id)">
+      <el-button size="small" type="danger" @click="$emit('delete', asset)">
         Delete
       </el-button>
     </div>
@@ -48,7 +48,7 @@
 </template>
 
 <script setup>
-import { computed, ref, onMounted } from 'vue'
+import { computed, ref, onMounted, watch } from 'vue'
 import { Picture, Calendar } from '@element-plus/icons-vue'
 import { formatDate } from '@/utils/dateFormatter'
 import { storageService } from '@/services/storageService'
@@ -70,8 +70,8 @@ const placeholderImage = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWln
 // Image URL state
 const imageUrl = ref(placeholderImage)
 
-// Get image URL from S3 if imageKey exists
-onMounted(async () => {
+// Load image from S3
+const loadImage = async () => {
   if (props.asset.imageKey) {
     try {
       const url = await storageService.getImageUrl(props.asset.imageKey)
@@ -81,7 +81,19 @@ onMounted(async () => {
     } catch (error) {
       console.error('Error loading image:', error)
     }
+  } else {
+    imageUrl.value = placeholderImage
   }
+}
+
+// Load image on mount
+onMounted(() => {
+  loadImage()
+})
+
+// Watch for changes to imageKey and reload image
+watch(() => props.asset.imageKey, () => {
+  loadImage()
 })
 
 // Truncate description
